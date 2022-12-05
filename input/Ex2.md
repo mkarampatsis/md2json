@@ -57,7 +57,7 @@ myList.push(42)         // now the list contains the number 42
 myList.push(17)         // now the list contains the number 42 followed by 17 -> [42, 17]
 ```
 #### Penalty
-20 points
+21 points
 
 ### Hint 3
 To check if the number is odd you have to use the modulus(`%`) operator. As we know from maths, in case a number is even and we divide it by 2, the result is 0. Hence:
@@ -80,7 +80,7 @@ else {
 ```
 
 #### Penalty
-20 Points
+22 Points
 
 ### Hint 4
 To create a list you have to type and place the elements you want separated by commas.

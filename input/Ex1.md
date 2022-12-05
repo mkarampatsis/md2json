@@ -3,7 +3,7 @@
 ## Chapter
 IF-ELIF-ELSE
 ## Subchapter
-Syntax of the if statement
+Syntax of the if statemen
 
 ## Introduction
 
