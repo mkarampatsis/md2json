@@ -1,9 +1,9 @@
 # Exercise 2:JavaScript
 
 ## Chapter
-ARRAYS
+chapter1,chapter2
 ## Subchapter
-Working with arrays
+subchapter1:subchapter2,subchapter3:subchapter15 
 
 ## Introduction
 The array is a single variable that is used to store different elements. It is often used when we want to store a list of elements and access them by a single variable. Unlike most languages where the array is a reference to the multiple variables, in JavaScript array is a single variable that stores multiple elements.

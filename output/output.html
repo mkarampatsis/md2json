@@ -4,99 +4,44 @@
 <meta charset="utf-8">
 </head>
 <body>
-<h1 id="exercise2javascript">Exercise 2:JavaScript</h1>
+<h1 id="exercise5javascript">Exercise 5:JavaScript</h1>
 <h2 id="chapter">Chapter</h2>
-<p>ARRAYS</p>
+<p>Data Types,For Loop</p>
+<h2 id="chapterintroduction">Chapter Introduction</h2>
+<p>The data types are a very basic building block of any language. The JavaScript language manipulates values, and those values belong to a type. More specifically, JavaScript offers seven primitive types:</p>
+<ol>
+<li>Number: Used for every number value (integers and floating point numbers)</li>
+<li>BigInt: Used for arbitrarily large integers</li>
+<li>String: Used to hold text</li>
+<li>Boolean: Used to hold <code>true</code> or <code>false</code> values</li>
+<li>Symbol: Used to create unique identifiers that won't collide</li>
+<li>Undefined: Used to show that a variable has not been assigned a value</li>
+<li>Null: Used to show a deliberate non-value</li>
+</ol>
 <h2 id="subchapter">Subchapter</h2>
-<p>Working with arrays</p>
-<h2 id="introduction">Introduction</h2>
-<p>The array is a single variable that is used to store different elements. It is often used when we want to store a list of elements and access them by a single variable. Unlike most languages where the array is a reference to the multiple variables, in JavaScript array is a single variable that stores multiple elements.</p>
-<pre><code class="js language-js">// Declaration of an Array: There are basically two ways to declare an array.
-// In general the first method is preferred
-let myArr = [ ];            // Method 1
-let myArr = new Array();    // Method 2
-</code></pre>
-<p>The following are the properties of a list.</p>
-<ul>
-<li>Mutable: The elements of the list can be modified. We can add or remove items to the list after it has been created.</li>
-<li>Ordered: The items in the lists are ordered. Each item has a unique index value. The new items will be added to the end of the list.</li>
-<li>Heterogenous: The list can contain different kinds of elements i.e; they can contain elements of string, integer, boolean, or any type.</li>
-<li>Duplicates: The list can contain duplicates i.e., lists can have two items with the same values.</li>
-</ul>
+<p>Primitive Types:The BigInt:subchapter2, subchapter1:subchapter</p>
+<h2 id="subchapterintroduction">Subchapter Introduction</h2>
+<p>The BigInt type is an arbitrary length integer. BigInts are specified with a number literal and an <code>n</code> suffix. The standard arithmetic operators are supported, including addition, subtraction, remainder arithmetic, etc. BigInts and numbers cannot be mixed in arithmetic operations.</p>
 <h2 id="exercisedescription">Exercise Description</h2>
-<p>Create a list with the numbers from 0 to 7 using a for loop. Then iterate this list and print for every element in this list if it is even or odd.</p>
+<p>Write a program to declare the BigInt <code>1234567890</code> as a variable and print it.</p>
 <h2 id="code">Code</h2>
-<pre><code class="js language-js">let myList = [];
-
-for (let i = 0; i &lt; 8; i++)
-    myList.push(i);
-
-for (let i = 0; i &lt; myList.length; i++) {
-    if (myList[i] % 2 == 0) console.log('Even');
-    else console.log('Odd');
-}
+<pre><code class="js language-js">let x = 1234567890;
+console.log(x);
 </code></pre>
 <h2 id="hints">Hints</h2>
 <h3 id="hint1">Hint 1</h3>
-<p>To create a list you have to type</p>
-<pre><code class="js language-js">let mylist = [];
+<p>Variables are declared using <code>const</code>, <code>let</code> or <code>var</code> keywords:</p>
+<pre><code class="js language-js">const variable_name_1 = 1;
+let variable_name_2 = 2;
+var variable_name_3 = 3;
 </code></pre>
 <h4 id="penalty">Penalty</h4>
-<p>20 points</p>
+<p>20 Points</p>
 <h3 id="hint2">Hint 2</h3>
-<p>To add elements to a list you have to use <code>push()</code> function:</p>
-<pre><code class="js language-js">let myList = []         // empty list
-myList.push(42)         // now the list contains the number 42
-myList.push(17)         // now the list contains the number 42 followed by 17 -&gt; [42, 17]
+<p>To print a BigInt to the console, use the <code>log()</code> function:</p>
+<pre><code class="js language-js">console.log(10.12);
 </code></pre>
 <h4 id="penalty-1">Penalty</h4>
-<p>21 points</p>
-<h3 id="hint3">Hint 3</h3>
-<p>To check if the number is odd you have to use the modulus(<code>%</code>) operator. As we know from maths, in case a number is even and we divide it by 2, the result is 0. Hence:</p>
-<pre><code class="js language-js">// In the example below, we expect to print EVEN, because 42 is an even number and when divided by 2 the result is 0
-if (42 % 2 == 0) {
-    console.log('EVEN');
-}
-else {
-    console.log('ODD');
-}
-
-// In the example below, we expect to print ODD, because 17 is an odd number and when divided by 2 the result is 0
-if (17 % 2 == 0) {
-    console.log('EVEN');
-}
-else {
-    console.log('ODD');
-}
-</code></pre>
-<h4 id="penalty-2">Penalty</h4>
-<p>22 Points</p>
-<h3 id="hint4">Hint 4</h3>
-<p>To create a list you have to type and place the elements you want separated by commas.</p>
-<pre><code class="js language-js">mylist = [];
-</code></pre>
-<h4 id="penalty-3">Penalty</h4>
-<p>20 Points</p>
-<h3 id="hint5">Hint 5</h3>
-<p>For the condition you have to use <code>length</code> property of the Array prototype. More specifically, you want to iterate every single element of this array, until your variable i (which is the index you are using in order to iterate the array) is less than the array's length.</p>
-<pre><code class="js language-js">const myList = [1, 2, 3];
-
-for (/* your expr1 goes here */; i &lt; myList.length; /* your expr3 goes here */) {
-    // body of the for loop
-}
-</code></pre>
-<h4 id="penalty-4">Penalty</h4>
-<p>20 Points</p>
-<h3 id="hint6">Hint 6</h3>
-<p>To access an element of the array you can use the following notation:</p>
-<pre><code class="js language-js">const myList = [1, 2, 3];
-
-console.log(myList[0]);     // prints 1
-console.log(myList[1]);     // prints 2
-console.log(myList[2]);     // prints 3
-console.log(myList[3]);     // undefined (the length of the array is 3, so you can access the elements of position 0 to 2)
-</code></pre>
-<h4 id="penalty-5">Penalty</h4>
 <p>20 Points</p>
 </body>
 </html>

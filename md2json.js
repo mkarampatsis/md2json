@@ -9,12 +9,13 @@ let child = []
 let tag = '';
 let object = {};
 object.introduction = [];
+object.subintroduction = [];
 object.exercise_description = [];
-// object.code = [];
+object.category = [];
 object.hints = [];
 
 try {
-  const data = fs.readFileSync('input/Ex2.md', 'utf8');
+  const data = fs.readFileSync('input/Ex5.md', 'utf8');
   html = converter.makeHtml(data);
 
   try {
@@ -53,13 +54,17 @@ try {
         if (getTag(child[i])==='h2' && getAttributeID(child[i])==='chapter'){
           setChildTag('chapter'); 
         }
+        
+        if (getTag(child[i])==='h2' && getAttributeID(child[i])==='chapterintroduction'){
+          setChildTag('chapterintroduction'); 
+        }
 
         if (getTag(child[i])==='h2' && getAttributeID(child[i])==='subchapter'){
           setChildTag('subchapter'); 
         }
 
-        if (getTag(child[i])==='h2' && getAttributeID(child[i])==='introduction'){
-          setChildTag('introduction'); 
+        if (getTag(child[i])==='h2' && getAttributeID(child[i])==='subchapterintroduction'){
+          setChildTag('subchapterintroduction'); 
         }
 
         if (getTag(child[i])==='h2' && getAttributeID(child[i])==='exercisedescription'){
@@ -74,26 +79,37 @@ try {
           setChildTag(getAttributeID(child[i])); 
         }
 
-        if (getTag(child[i])==='p' || getTag(child[i])==='pre' || getTag(child[i])==='ul'){
+        if (getTag(child[i])==='p' || getTag(child[i])==='pre' || getTag(child[i])==='ul' || getTag(child[i])==='ol'){
           
-          if (getChildTag()==='chapter')
-            object.chapter = json2html(child[i]).toLowerCase();
-          else if (getChildTag()==='subchapter')
-            object.subchapter = json2html(child[i]).toLowerCase();
-          else if (getChildTag()==='introduction')
+          if (getChildTag()==='chapter') {
+            chArr = child[i]['child'][0]['text'].toLowerCase().split(",");
+            for (let i = 0; i < chArr.length; i++) {
+              object.category[i] = {'chapter':'', 'subchapter':[]}
+              object.category[i].chapter = chArr[i].trim();
+            } 
+          }
+          else if (getChildTag()==='subchapter'){
+            subArr = child[i]['child'][0]['text'].toLowerCase().split(",");
+            for (let i = 0; i < subArr.length; i++) {
+              subSplit = subArr[i].split(":");
+              for (let x = 0; x < subSplit.length; x++) {
+                object.category[i].subchapter.push(subSplit[x].trim());
+              } 
+            }
+          }
+          else if (getChildTag()==='chapterintroduction')
             object.introduction.push(json2html(child[i]).toLowerCase());
+          else if (getChildTag()==='subchapterintroduction')
+            object.subintroduction.push(json2html(child[i]).toLowerCase());  
           else if (getChildTag()==='exercisedescription')
             object.exercise_description.push(json2html(child[i]).toLowerCase());
           else if (getChildTag()==='code') 
             object.code = child[i]['child'][0]['child'][0]['text'];
           else if (getChildTag().indexOf('hint')===0){
-            object.hints[Number(getChildTag().split('hint')[1])-1] = {'text':'', 'code':'', 'penalty':''};
-            
-            console.log(Number(getChildTag().split('hint')[1])-1, getTag(child[i]),json2html(child[i]));
-            console.log("1>>>",getTag(child[i])==='p' && !json2html(child[i]).includes('points') && !json2html(child[i]).includes('Points'));
-            
-            if (getTag(child[i])==='p' && (!json2html(child[i]).includes('points') || !json2html(child[i]).includes('Points')))
+            if (getTag(child[i])==='p' && !json2html(child[i]).includes('points') && !json2html(child[i]).includes('Points')){
+              object.hints[Number(getChildTag().split('hint')[1])-1] = {'text':'', 'code':'', 'penalty':''};
               object.hints[Number(getChildTag().split('hint')[1])-1].text = json2html(child[i]).toLowerCase();
+            }
             
             if (getTag(child[i])==='pre'){
               object.hints[Number(getChildTag().split('hint')[1])-1].code = json2html(child[i]).toLowerCase();
@@ -105,7 +121,7 @@ try {
         }
       }
     }
-    
+
     console.log(object);
     object2text=JSON.stringify(object);
     fs.writeFileSync('output/dom.json', object2text, { flag: 'w+' });
