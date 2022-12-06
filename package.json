@@ -1,6 +1,10 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.3",
     "html2json": "^1.0.2",
+    "mongodb": "^4.12.1",
+    "mongoose": "^6.8.0",
+    "mongoose-unique-validator": "^3.1.0",
     "showdown": "^2.1.0"
   }
 }

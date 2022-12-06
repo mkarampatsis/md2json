@@ -1,11 +1,11 @@
+# Author:Christos Hadjichristofis:christoshadjichristofi@hotmail.com 
+
 # Exercise 2:JavaScript
 
 ## Chapter
 chapter1,chapter2
-## Subchapter
-subchapter1:subchapter2,subchapter3:subchapter15 
 
-## Introduction
+## Chapter Introduction
 The array is a single variable that is used to store different elements. It is often used when we want to store a list of elements and access them by a single variable. Unlike most languages where the array is a reference to the multiple variables, in JavaScript array is a single variable that stores multiple elements.
 
 ```js
@@ -21,6 +21,12 @@ The following are the properties of a list.
 - Ordered: The items in the lists are ordered. Each item has a unique index value. The new items will be added to the end of the list.
 - Heterogenous: The list can contain different kinds of elements i.e; they can contain elements of string, integer, boolean, or any type.
 - Duplicates: The list can contain duplicates i.e., lists can have two items with the same values.
+
+## Subchapter
+subchapter1:subchapter2,subchapter3:subchapter15 
+
+## Subchapter Introduction
+The BigInt type is an arbitrary length integer. BigInts are specified with a number literal and an `n` suffix. The standard arithmetic operators are supported, including addition, subtraction, remainder arithmetic, etc. BigInts and numbers cannot be mixed in arithmetic operations.
 
 ## Exercise Description
 Create a list with the numbers from 0 to 7 using a for loop. Then iterate this list and print for every element in this list if it is even or odd.

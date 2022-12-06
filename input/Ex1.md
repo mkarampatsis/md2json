@@ -1,11 +1,11 @@
+# Author:Christos Hadjichristofis:christoshadjichristofi@hotmail.com 
+
 # Exercise 1:Python
 
 ## Chapter
-IF-ELIF-ELSE
-## Subchapter
-Syntax of the if statemen
+chapter1,chapter2
 
-## Introduction
+## Chapter Introduction
 
 A conditional statement (also called an if-then statement) is **a statement with a hypothesis followed by a conclusion**. The hypothesis is the first part of the statement, the "if" clause. The conclusion is the second part of the statement, the "then" clause. The conclusion is the result of the hypothesis. So `if-else` statement is used for conditional decision-making. 
 
@@ -20,6 +20,12 @@ else:
 ```
 
 And the expressions followed by the keywords `if, elif, else` are some conditions that must always evaluate to `true` or `false`.
+
+## Subchapter
+subchapter1:subchapter2,subchapter3:subchapter15 
+
+## Subchapter Introduction
+XXXX
 
 ## Exercise Description
 Write a program that calculates the square of a number (declared by you, as a variable) if the number is greater than 42. The result should only be printed if the number you chose is greater than 42. In any other case the program shouldn't print anything.
