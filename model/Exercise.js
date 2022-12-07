@@ -53,7 +53,8 @@ const exerciseSchema = new Schema({
     author: { type: authorSchema, required: true },
 		exercise: { type: String, required: true },
     type: { type: String, required: true },
-    code: { type: String, required: true }
+    code: { type: String, required: true },
+    output: { type: Array, required: true }
 	});
 
 // Apply the uniqueValidator plugin to userSchema.

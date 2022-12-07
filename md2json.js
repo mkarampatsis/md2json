@@ -42,7 +42,7 @@ fs.readdirSync(inputFolder).forEach(file => {
       
       for (let i in child) {
         if (child[i]['node']==='element'){
-  
+
           if (getTag(child[i])==='h1'){
             if (child[i]['child'][0]['text'].includes('Exercise')){
               object.exercise = child[i]['child'][0]['text'].split(":")[0].toLowerCase();
@@ -77,6 +77,10 @@ fs.readdirSync(inputFolder).forEach(file => {
           if (getTag(child[i])==='h2' && getAttributeID(child[i])==='code'){
             setChildTag('code'); 
           }
+
+          if (getTag(child[i])==='h2' && getAttributeID(child[i])==='outputdata'){
+            setChildTag('outputdata'); 
+          }
   
           if (getTag(child[i])==='h3'){
             setChildTag(getAttributeID(child[i])); 
@@ -108,6 +112,8 @@ fs.readdirSync(inputFolder).forEach(file => {
               object.exercise_description.push(json2html(child[i]).toLowerCase());
             else if (getChildTag()==='code') 
               object.code = child[i]['child'][0]['child'][0]['text'];
+            else if (getChildTag()==='outputdata'){
+              object.outputdata = child[i]['child'][0]['text'].split(':');}  
             else if (getChildTag().indexOf('hint')===0){
               if (getTag(child[i])==='p' && !json2html(child[i]).includes('points') && !json2html(child[i]).includes('Points')){
                 object.hints[Number(getChildTag().split('hint')[1])-1] = {'text':'', 'code':'', 'penalty':''};
@@ -137,7 +143,8 @@ fs.readdirSync(inputFolder).forEach(file => {
         author: object.author,
         exercise: object.exercise,
         type: object.type,
-        code: object.code 
+        code: object.code,
+        output: object.outputdata 
       })
   
       newExercise.save(function(err,result){

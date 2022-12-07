@@ -30,6 +30,8 @@ Write a program to declare the BigInt `1234567890` as a variable and print it.
 let x = 1234567890;
 console.log(x);
 ```
+## Output Data
+12:14:hello world
 
 ## Hints
 
