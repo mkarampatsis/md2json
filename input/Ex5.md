@@ -31,7 +31,15 @@ let x = 1234567890;
 console.log(x);
 ```
 ## Output Data
+type=multiline
 12:14:hello world
+
+This
+Is
+A
+
+Sample
+Output
 
 ## Hints
 

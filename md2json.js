@@ -11,11 +11,6 @@ converter = new showdown.Converter({completeHTMLDocument: true, tables: true});
 let child = []
 let tag = '';
 let object = {};
-object.introduction = [];
-object.subintroduction = [];
-object.exercise_description = [];
-object.category = [];
-object.hints = [];
 
 const inputFolder = './input/';
 
@@ -24,6 +19,13 @@ fs.readdirSync(inputFolder).forEach(file => {
   try {
     const data = fs.readFileSync(`input/${file}`, 'utf8');
     html = converter.makeHtml(data);
+
+    object.introduction = [];
+    object.subintroduction = [];
+    object.exercise_description = [];
+    object.category = [];
+    object.hints = [];
+    object.outputdata = [];
   
     try {
       fs.writeFileSync('output/output.html', html, { flag: 'w+' });
@@ -34,7 +36,7 @@ fs.readdirSync(inputFolder).forEach(file => {
       fs.writeFileSync('output/output.json', json2text, { flag: 'w+' });
       
       child = json['child'][0]['child'][3]['child']
-  
+
       function getAttributeID(data){ return data['attr']['id']; }
       function getTag(data){ return data['tag']; }
       function setChildTag(text){ tag = text; }
@@ -113,7 +115,10 @@ fs.readdirSync(inputFolder).forEach(file => {
             else if (getChildTag()==='code') 
               object.code = child[i]['child'][0]['child'][0]['text'];
             else if (getChildTag()==='outputdata'){
-              object.outputdata = child[i]['child'][0]['text'].split(':');}  
+              // object.outputdata = child[i]['child'][0]['text'].split(':');}
+              object.outputdata.push(child[i]['child'][0]['text']);
+              // object.outputdata = child[i]['child'][0]['text'];
+            }  
             else if (getChildTag().indexOf('hint')===0){
               if (getTag(child[i])==='p' && !json2html(child[i]).includes('points') && !json2html(child[i]).includes('Points')){
                 object.hints[Number(getChildTag().split('hint')[1])-1] = {'text':'', 'code':'', 'penalty':''};
@@ -135,16 +140,16 @@ fs.readdirSync(inputFolder).forEach(file => {
       fs.writeFileSync('output/dom.json', object2text, { flag: 'w+' });
   
       var newExercise = new Exercise ({
-        introductions: object.introduction,
-        subintroduction: object.subintroduction,
-        exercise_description: object.exercise_description,
+        introduction: object.introduction.join(' '),
+        subintroduction: object.subintroduction.join(' '),
+        exercise_description: object.exercise_description.join(' '),
         category: object.category,
         hints: object.hints,
         author: object.author,
         exercise: object.exercise,
         type: object.type,
         code: object.code,
-        output: object.outputdata 
+        output: object.outputdata.join(' ') 
       })
   
       newExercise.save(function(err,result){

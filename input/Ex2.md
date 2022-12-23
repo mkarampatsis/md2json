@@ -44,6 +44,10 @@ for (let i = 0; i < myList.length; i++) {
 }
 ```
 
+## Output Data
+type = oneline
+12:14:hello world
+
 ## Hints
 
 ### Hint 1

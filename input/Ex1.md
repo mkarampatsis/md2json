@@ -30,6 +30,10 @@ XXXX
 ## Exercise Description
 Write a program that calculates the square of a number (declared by you, as a variable) if the number is greater than 42. The result should only be printed if the number you chose is greater than 42. In any other case the program shouldn't print anything.
 
+Write a program that you declare variables named `x`, `z` and `w` with the values `10`, `5` and `2` respectively. Print the result of the following expression to the console:
+
+$$ y = { { 5{ 3x^2 + 5x + 2 \over 7w - { 1 \over z } } - z } \over 4 { { 3 + x \over 7 } } }$$
+
 ## Code
 ```py3
 myNumber = 4
@@ -37,6 +41,15 @@ myNumber = 4
 if myNumber > 42:
     print(number * number)
 ```
+
+## Output Data
+type=multiline
+12:14:hello world
+This
+Is
+A
+Sample
+Output
 
 ## Hints
 

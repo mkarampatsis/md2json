@@ -45,7 +45,7 @@ const authorSchema = new mongoose.Schema({
 }, { _id : false });
 
 const exerciseSchema = new Schema({
-		introductions: { type: Array, required: true },
+		introduction: { type: Array, required: true },
 		subintroduction: { type: Array, required: true },
 		exercise_description: { type: Array, required: true },
 		category: { type: [categorySchema], required: true },
