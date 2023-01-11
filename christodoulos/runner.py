@@ -1,4 +1,6 @@
 import subprocess
+import sys
+
 from dotenv import load_dotenv
 import os
 from mongoengine import *
@@ -37,6 +39,7 @@ def node_error_str(node_output):
 
 runtimeErrors = []
 wrongOutputs = []
+javascript = []
 
 for ex in Exercises.objects():
     if ex.type == 'python':
@@ -62,22 +65,46 @@ for ex in Exercises.objects():
                 "error": exc
             }
             runtimeErrors.append(error)
-    # else:
-    #     print(ex.id)
-    #     code = html2code(ex.code)
-    #     cmd = ('/home/christodoulos/.nvm/versions/node/v18.12.1/bin/node', '-e', code)
-    #     p = subprocess.run(cmd, capture_output=True, text=True)
-    #     if p.stderr:
-    #         print(node_error_str(p.stderr))
-    #         print(ex.output[0].split('\n')[1].replace('Uncaught ', ''))
+    else:
+        code = html2code(ex.code)
+        cmd = ('/home/christodoulos/.nvm/versions/node/v18.12.1/bin/node', '-e', code)
+        p = subprocess.run(cmd, capture_output=True, text=True)
+
+        if p.stderr:
+            expected = node_error_str(p.stderr)
+        else:
+            expected = p.stdout.strip()
+
+        try:
+            typed = ex.output[0].strip().split('\n')[0].split('=')[1]
+            inmongo = ex.output[0].strip().split('\n')[1]
+            if typed == 'multiline':
+                inmongo = inmongo.replace('^', '\n')
+            else:
+                inmongo = inmongo.replace('^', ' ')
+        except:
+            inmongo = ex.output[0].strip()
 
 
-if len(runtimeErrors):
-    print("RUNTIME ERRORS")
-    for error in runtimeErrors:
-        pprint(error)
+        if inmongo != expected:
+            print("\n=======================================================")
+            print(ex.id)
+            print("=======================================================")
+            print(inmongo)
+            print("-------------------------------------------------------")
+            print(expected)
+            javascript.append(ex.id)
 
-if len(wrongOutputs):
-    print("WRONG OUTPUTS")
-    for error in wrongOutputs:
-        pprint(error)
+print(javascript)
+print(len(javascript))
+
+
+# if len(runtimeErrors):
+#     print("RUNTIME ERRORS")
+#     for error in runtimeErrors:
+#         pprint(error)
+#
+# if len(wrongOutputs):
+#     print("WRONG OUTPUTS")
+#     for error in wrongOutputs:
+#         pprint(error)
