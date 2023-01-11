@@ -4,53 +4,70 @@
 <meta charset="utf-8">
 </head>
 <body>
-<h1 id="authorchristoshadjichristofischristoshadjichristofihotmailcom">Author:Christos Hadjichristofis:christoshadjichristofi@hotmail.com</h1>
-<h1 id="exercise5javascript">Exercise 5:JavaScript</h1>
+<h1 id="authornicolettatsiopanitsiopnicol_99hotmailcom">Author:Nicoletta Tsiopani :tsiopnicol_99@hotmail.com</h1>
+<h1 id="exercise60python">Exercise 60: Python</h1>
 <h2 id="chapter">Chapter</h2>
-<p>Data Types,For Loop</p>
+<p>Lists</p>
 <h2 id="chapterintroduction">Chapter Introduction</h2>
-<p>The data types are a very basic building block of any language. The JavaScript language manipulates values, and those values belong to a type. More specifically, JavaScript offers seven primitive types:</p>
-<ol>
-<li>Number: Used for every number value (integers and floating point numbers)</li>
-<li>BigInt: Used for arbitrarily large integers</li>
-<li>String: Used to hold text</li>
-<li>Boolean: Used to hold <code>true</code> or <code>false</code> values</li>
-<li>Symbol: Used to create unique identifiers that won't collide</li>
-<li>Undefined: Used to show that a variable has not been assigned a value</li>
-<li>Null: Used to show a deliberate non-value</li>
-</ol>
+<p>Lists are used to store multiple items in a single variable.</p>
+<p>Lists are one of 4 built-in data types in Python used to store collections of data. A list can contain any datatype, even different datatypes.</p>
+<p>The items of a list are always in order and it is very easy to add, change or remove elements of a list.</p>
+<p>Lists are created using square brackets:</p>
+<pre><code class="python language-python">listname = [1,2,3]
+
+print(listname)
+</code></pre>
 <h2 id="subchapter">Subchapter</h2>
-<p>Primitive Types:The BigInt:subchapter2, subchapter1:subchapter</p>
-<h2 id="subchapterintroduction">Subchapter Introduction</h2>
-<p>The BigInt type is an arbitrary length integer. BigInts are specified with a number literal and an <code>n</code> suffix. The standard arithmetic operators are supported, including addition, subtraction, remainder arithmetic, etc. BigInts and numbers cannot be mixed in arithmetic operations.</p>
+<p>Lists: String to List conversion: List reverse() Method: List clear() Method, Python Functions, Python If…Else: Working with IF &amp; IF-ELSE Statement</p>
 <h2 id="exercisedescription">Exercise Description</h2>
-<p>Write a program to declare the BigInt <code>1234567890</code> as a variable and print it.</p>
+<p>Save the string <code>'friends'</code> as a variable with the name <code>s</code>. Convert this string to a list of characters <code>sl</code> by using the list() function. If the length of the list is larger than <code>3</code>, then reverse the list. If the length of the list is not larger than <code>3</code>, then clear the list. Print the list <code>sl</code>.</p>
 <h2 id="code">Code</h2>
-<pre><code class="js language-js">let x = 1234567890;
-console.log(x);
+<pre><code class="python language-python">s = 'friends'
+
+sl = list(s)
+
+if len(sl) &gt; 3 :
+    sl.reverse()
+else :
+    sl.clear()
+
+print(sl)
 </code></pre>
 <h2 id="outputdata">Output Data</h2>
-<p>type=multiline
-12:14:hello world</p>
-<p>This
-Is
-A</p>
-<p>Sample
-Output</p>
+<p>['s', 'd', 'n', 'e', 'i', 'r', 'f']</p>
 <h2 id="hints">Hints</h2>
 <h3 id="hint1">Hint 1</h3>
-<p>Variables are declared using <code>const</code>, <code>let</code> or <code>var</code> keywords:</p>
-<pre><code class="js language-js">const variable_name_1 = 1;
-let variable_name_2 = 2;
-var variable_name_3 = 3;
+<p>To convert a string <code>stringname</code> to a list of characters write:</p>
+<pre><code class="python language-python">listname = list(stringname)
 </code></pre>
 <h4 id="penalty">Penalty</h4>
 <p>20 Points</p>
 <h3 id="hint2">Hint 2</h3>
-<p>To print a BigInt to the console, use the <code>log()</code> function:</p>
-<pre><code class="js language-js">console.log(10.12);
+<p>To use the length function write:</p>
+<pre><code class="python language-python">len(listname)
 </code></pre>
 <h4 id="penalty-1">Penalty</h4>
+<p>20 Points</p>
+<h3 id="hint3">Hint 3</h3>
+<p>To create the if-elif statement use this form of code:</p>
+<pre><code class="python language-python">if condition :
+    expressions
+else :
+    expressions
+</code></pre>
+<h4 id="penalty-2">Penalty</h4>
+<p>20 Points</p>
+<h3 id="hint4">Hint 4</h3>
+<p>To reverse the order of the items in a list <code>listname</code> write:</p>
+<pre><code class="python language-python">listname.reverse()
+</code></pre>
+<h4 id="penalty-3">Penalty</h4>
+<p>20 Points</p>
+<h3 id="hint5">Hint 5</h3>
+<p>To remove the elements of a list write:</p>
+<pre><code class="python language-python">listname.clear()
+</code></pre>
+<h4 id="penalty-4">Penalty</h4>
 <p>20 Points</p>
 </body>
 </html>

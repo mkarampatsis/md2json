@@ -11,6 +11,7 @@ converter = new showdown.Converter({completeHTMLDocument: true, tables: true});
 let child = []
 let tag = '';
 let object = {};
+let subObject = {};
 
 const inputFolder = './input/';
 
@@ -18,12 +19,13 @@ fs.readdirSync(inputFolder).forEach(file => {
     
   try {
     const data = fs.readFileSync(`input/${file}`, 'utf8');
+    console.log("File: ",file)
     html = converter.makeHtml(data);
 
     object.introduction = [];
     object.subintroduction = [];
     object.exercise_description = [];
-    object.category = [];
+    // object.category = [];
     object.hints = [];
     object.outputdata = [];
   
@@ -47,8 +49,8 @@ fs.readdirSync(inputFolder).forEach(file => {
 
           if (getTag(child[i])==='h1'){
             if (child[i]['child'][0]['text'].includes('Exercise')){
-              object.exercise = child[i]['child'][0]['text'].split(":")[0].toLowerCase();
-              object.type = child[i]['child'][0]['text'].split(":")[1].toLowerCase()
+              object.exercise = child[i]['child'][0]['text'].split(":")[0].toLowerCase().trim();
+              object.type = child[i]['child'][0]['text'].split(":")[1].toLowerCase().trim()
             } else {
               object.author = {'name':'', 'email':''}
               object.author.name = child[i]['child'][0]['text'].split(":")[1]
@@ -93,17 +95,19 @@ fs.readdirSync(inputFolder).forEach(file => {
             if (getChildTag()==='chapter') {
               chArr = child[i]['child'][0]['text'].toLowerCase().split(",");
               for (let i = 0; i < chArr.length; i++) {
-                object.category[i] = {'chapter':'', 'subchapter':[]}
-                object.category[i].chapter = chArr[i].trim();
+                object.category = {'chapter':'', 'subchapter':[]}
+                object.category.chapter = chArr[i].trim();
               } 
             }
             else if (getChildTag()==='subchapter'){
               subArr = child[i]['child'][0]['text'].toLowerCase().split(",");
               for (let i = 0; i < subArr.length; i++) {
                 subSplit = subArr[i].split(":");
-                for (let x = 0; x < subSplit.length; x++) {
-                  object.category[i].subchapter.push(subSplit[x].trim());
-                } 
+                subObject = {
+                  'chapter': subSplit[0].trim(),
+                  'subchapter':subSplit.slice(1)
+                }
+                object.category.subchapter.push(subObject);
               }
             }
             else if (getChildTag()==='chapterintroduction')
@@ -130,6 +134,8 @@ fs.readdirSync(inputFolder).forEach(file => {
               }
               
               if (json2html(child[i]).includes('Points') || json2html(child[i]).includes('points'))
+                // console.log(Number(getChildTag().split('hint')[1])-1,json2html(child[i]).toLowerCase());
+                // console.log(json2html(child[i]).includes('Points') || json2html(child[i]).includes('points'));
                 object.hints[Number(getChildTag().split('hint')[1])-1].penalty = json2html(child[i]).toLowerCase();
              }  
           }
@@ -154,17 +160,21 @@ fs.readdirSync(inputFolder).forEach(file => {
   
       newExercise.save(function(err,result){
         if (err){
+          console.log(object.exercise)
           console.log(err);
         }
         else{
-          console.log(result);
+          console.log(result.exercise);
+          // console.log(result);
           // mongoose.connection.close();
         }
       })
     } catch (err) {
+      console.log(object.exercise)
       console.error(err);
     }
   } catch (err) {
+    console.log(object.exercise)
     console.error(err);
   }
 });

@@ -28,7 +28,7 @@ const categorySchema = new mongoose.Schema({
 
 const hintSchema = new mongoose.Schema({
   text: { type: String, required: true },
-	code: { type: String, required: true },
+	code: { type: String },
   penalty: { type: String, required: true },
 }, { _id : false });
 
@@ -48,7 +48,7 @@ const exerciseSchema = new Schema({
 		introduction: { type: Array, required: true },
 		subintroduction: { type: Array, required: true },
 		exercise_description: { type: Array, required: true },
-		category: { type: [categorySchema], required: true },
+		category: { type: categorySchema, required: true },
     hints: { type: [hintSchema], required: true },
     author: { type: authorSchema, required: true },
 		exercise: { type: String, required: true },
