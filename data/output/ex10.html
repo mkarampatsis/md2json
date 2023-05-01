@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<h1 id="authornicolettatsiopanitsiopnicol_99hotmailcom">Author:Nicoletta Tsiopani :tsiopnicol_99@hotmail.com</h1>
+<h1 id="exercise10python">Exercise 10: Python</h1>
+<h2 id="chapter">Chapter</h2>
+<p>Lists</p>
+<h2 id="chapterintroduction">Chapter Introduction</h2>
+<p>Lists are used to store multiple items in a single variable.</p>
+<p>Lists are one of 4 built-in data types in Python used to store collections of data. A list can contain any datatype, even different datatypes.</p>
+<p>The items of a list are always in order and it is very easy to add, change or remove elements of a list.</p>
+<p>Lists are created using square brackets:</p>
+<pre><code class="python language-python">listname = [1,2,3]
+
+print(listname)
+</code></pre>
+<h2 id="subchapter">Subchapter</h2>
+<p>Lists: Indexing: List Creation by Range() Function</p>
+<h2 id="subchapterintroduction">Subchapter Introduction</h2>
+<p>Indexing is needed to access the items of a list, using square brackets. </p>
+<pre><code class="python language-python">variable = listname[index]
+</code></pre>
+<p>There are two ways of indexing:</p>
+<p>Zero indexing: the first item of a list has the index <code>0</code>, the second item of the list has the index <code>1</code> and so on.</p>
+<p>Negative indexing: the last item of a list has the index <code>-1</code>, the second last item has the index <code>-2</code> and so on.</p>
+<p>Slicing is used to access more than one item of a list in one command.</p>
+<pre><code class="python language-python">values = listname[start:end]
+</code></pre>
+<p>The index <code>start</code> is included while the index <code>end</code> is not.</p>
+<p>The index <code>start</code> can be omitted and it is considered that it takes the value <code>0</code>. Also, the index <code>end</code> can be omitted and it is considered that it takes the index of the last item of the list.</p>
+<h2 id="exercisedescription">Exercise Description</h2>
+<p>Create a list called <code>evennums</code> which contains all the even numbers between <code>1</code> and <code>20</code> (included) (i.e. <code>2</code>,<code>4</code>,<code>6</code>,…) by using the Range() Function. Print the first five items of the list and then print the last five items of the list.</p>
+<h2 id="code">Code</h2>
+<pre><code class="python language-python">evennums = list(range(2,21,2))
+
+print(evennums[:5])
+print(evennums[5:])
+</code></pre>
+<h2 id="outputdata">Output Data</h2>
+<p>[2, 4, 6, 8, 10]^[12, 14, 16, 18, 20]</p>
+<h2 id="hints">Hints</h2>
+<h3 id="hint1">Hint 1</h3>
+<p>To access the first <code>n</code> items of a list write:</p>
+<pre><code class="python language-python">values = listname[:n]
+</code></pre>
+<h4 id="penalty">Penalty</h4>
+<p>20 Points</p>
+<h3 id="hint2">Hint 2</h3>
+<p>To access the last items of a list write:</p>
+<pre><code class="python language-python">values = listname[start:]
+</code></pre>
+<h4 id="penalty-1">Penalty</h4>
+<p>20 Points</p>
+</body>
+</html>

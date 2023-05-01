@@ -1,4 +1,25 @@
+/* This is Exercise.js */
 const mongoose = require('mongoose');
+// const uniqueValidator = require('mongoose-unique-validator');
+
+require("dotenv").config();
+
+const uri = process.env.ATLAS_URI;
+
+mongoose.set('strictQuery', false);
+mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology: true});
+
+const connection = mongoose.connection;
+
+// connection.once("open", () => {
+// 	console.log("Connected Database Successfully");
+// });
+
+// const validateEmail = (email) => {
+//   const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   return re.test(email);
+// };
+
 const Schema = mongoose.Schema;
 
 const categorySchema = new mongoose.Schema({
