@@ -7,19 +7,16 @@ const app = Express();
 const PORT = 8000;
 
 const connectDB = require('./connection/connection');
-const md2json = require("./controllers/md2json.controller");
+const md2json = require("./routes/md2json.routes");
 
-app.get("/", (req, res) => {
+app.use('/api', md2json);
+app.use("/", (req, res) => {
   res.send("welcome to the server.");
 });
 
-app.get("/import", (req, res) => {
-  res.send("import data.");
-});
-
-const start = async () => {
+const start = () => {
   try {
-    await connectDB(uri);
+    connectDB(uri);
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}.`);
     });
