@@ -13,12 +13,12 @@ let tag = '';
 let object = {};
 let subObject = {};
 
-const inputFolder = './input/';
+const inputFolder = './data/input/';
 
 fs.readdirSync(inputFolder).forEach(file => {
     
   try {
-    const data = fs.readFileSync(`input/${file}`, 'utf8');
+    const data = fs.readFileSync(`data/input/${file}`, 'utf8');
     console.log("File: ",file)
     html = converter.makeHtml(data);
 
@@ -30,12 +30,12 @@ fs.readdirSync(inputFolder).forEach(file => {
     object.outputdata = [];
   
     try {
-      fs.writeFileSync('output/output.html', html, { flag: 'w+' });
+      fs.writeFileSync('data/output/output.html', html, { flag: 'w+' });
       
       json = html2json(html);
       json2text = JSON.stringify(json);
      
-      fs.writeFileSync('output/output.json', json2text, { flag: 'w+' });
+      fs.writeFileSync('data/output/output.json', json2text, { flag: 'w+' });
       
       child = json['child'][0]['child'][3]['child']
 
@@ -143,7 +143,7 @@ fs.readdirSync(inputFolder).forEach(file => {
       }
   
       object2text=JSON.stringify(object);
-      fs.writeFileSync('output/dom.json', object2text, { flag: 'w+' });
+      fs.writeFileSync('data/output/dom.json', object2text, { flag: 'w+' });
   
       var newExercise = new Exercise ({
         introduction: object.introduction.join(' '),

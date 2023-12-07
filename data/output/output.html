@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<h1 id="authorchristoshadjichristofichristoshadjichristofihotmailcom">Author:Christos Hadjichristofi:christoshadjichristofi@hotmail.com</h1>
+<h1 id="exercise9python">Exercise 9:Python</h1>
+<h2 id="chapter">Chapter</h2>
+<p>Python Casting</p>
+<h2 id="chapterintroduction">Chapter Introduction</h2>
+<p>Casting in Python is a process of converting a variable from one data type to another. You can use built-in functions to cast variables to different data types, such as int(), float(), and str(). Here's a brief explanation of each:</p>
+<ol>
+<li>int(): Casts a variable to an integer. If the input is a float, it will truncate the decimal part. If the input is a string, it must represent a valid integer; otherwise, a ValueError will be raised.</li>
+<li>float(): Casts a variable to a floating-point number. If the input is an integer, it will add a decimal part (e.g., 3 becomes 3.0). If the input is a string, it must represent a valid float; otherwise, a ValueError will be raised.</li>
+<li>str(): Casts a variable to a string. If the input is an integer or a float, it will convert the number to its string representation.</li>
+</ol>
+<p>Here are some examples of casting in Python:</p>
+<pre><code class="py3 language-py3"># Casting an integer to a float
+int_value = 5
+float_value = float(int_value)
+print(float_value)  # Output: 5.0
+
+# Casting a float to an integer
+float_value = 5.7
+int_value = int(float_value)
+print(int_value)  # Output: 5 (truncated)
+
+# Casting a string to an integer
+string_value = "10"
+int_value = int(string_value)
+print(int_value)  # Output: 10
+
+# Casting an integer to a string
+int_value = 42
+string_value = str(int_value)
+print(string_value)  # Output: "42"
+
+# Casting a string to a float
+string_value = "3.14"
+float_value = float(string_value)
+print(float_value)  # Output: 3.14
+</code></pre>
+<p>Keep in mind that not all values can be cast to all data types. For example, attempting to cast a non-numeric string to an integer or a float will raise a ValueError.</p>
+<h2 id="subchapter">Subchapter</h2>
+<p>Python Casting:What is Complex Type Casting</p>
+<h2 id="subchapterintroduction">Subchapter Introduction</h2>
+<p>Complex type casting, also known as explicit type casting, is a technique used in programming to convert data from one type to another. Specifically, complex type casting involves converting data between complex number types, which are numbers in the form a + bi, where a and b are real numbers and i is the imaginary unit.</p>
+<p>In Python, complex type casting is done explicitly by using the complex() function. This function takes two arguments: the real part of the complex number and the imaginary part of the complex number. For example, to cast the integer 3 and the float 2.5 to a complex number, we can use the following code:</p>
+<pre><code class="py3 language-py3">x = complex(3, 2.5)
+</code></pre>
+<p>This will create a complex number with a real part of 3 and an imaginary part of 2.5i.</p>
+<h2 id="exercisedescription">Exercise Description</h2>
+<p>Create a complex number from a negative float and a positive integer. (Input: x = -2.75, y = 4)</p>
+<h2 id="code">Code</h2>
+<pre><code class="py3 language-py3">x = -2.75
+y = 4
+z = complex(x, y)
+print(z)
+</code></pre>
+<h2 id="outputdata">Output Data</h2>
+<p>type=oneline
+(-2.75+4j)</p>
+<h2 id="hints">Hints</h2>
+<h3 id="hint1">Hint 1</h3>
+<p>The <code>complex()</code> function takes two arguments: the real part and the imaginary part.</p>
+<h4 id="penalty">Penalty</h4>
+<p>20 Points</p>
+<h3 id="hint2">Hint 2</h3>
+<p>The result of the <code>complex()</code> function is a complex number.</p>
+<h4 id="penalty-1">Penalty</h4>
+<p>20 Points</p>
+<h2 id="difficulty">Difficulty</h2>
+<p>1</p>
+</body>
+</html>

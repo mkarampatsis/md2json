@@ -1,71 +1,88 @@
-# Author:Nicoletta Tsiopani :tsiopnicol_99@hotmail.com
+# Author:Christos Hadjichristofi:christoshadjichristofi@hotmail.com
 
-# Exercise 9: Python
+# Exercise 9:Python
 
 ## Chapter
-Lists
+Python Casting
 
 ## Chapter Introduction
-Lists are used to store multiple items in a single variable.
+Casting in Python is a process of converting a variable from one data type to another. You can use built-in functions to cast variables to different data types, such as int(), float(), and str(). Here's a brief explanation of each:
+1. int(): Casts a variable to an integer. If the input is a float, it will truncate the decimal part. If the input is a string, it must represent a valid integer; otherwise, a ValueError will be raised.
+2. float(): Casts a variable to a floating-point number. If the input is an integer, it will add a decimal part (e.g., 3 becomes 3.0). If the input is a string, it must represent a valid float; otherwise, a ValueError will be raised.
+3. str(): Casts a variable to a string. If the input is an integer or a float, it will convert the number to its string representation.
 
-Lists are one of 4 built-in data types in Python used to store collections of data. A list can contain any datatype, even different datatypes.
+Here are some examples of casting in Python:
+```py3
+# Casting an integer to a float
+int_value = 5
+float_value = float(int_value)
+print(float_value)  # Output: 5.0
 
-The items of a list are always in order and it is very easy to add, change or remove elements of a list.
+# Casting a float to an integer
+float_value = 5.7
+int_value = int(float_value)
+print(int_value)  # Output: 5 (truncated)
 
-Lists are created using square brackets:
+# Casting a string to an integer
+string_value = "10"
+int_value = int(string_value)
+print(int_value)  # Output: 10
 
-```python
-listname = [1,2,3]
+# Casting an integer to a string
+int_value = 42
+string_value = str(int_value)
+print(string_value)  # Output: "42"
 
-print(listname)
+# Casting a string to a float
+string_value = "3.14"
+float_value = float(string_value)
+print(float_value)  # Output: 3.14
 ```
+
+Keep in mind that not all values can be cast to all data types. For example, attempting to cast a non-numeric string to an integer or a float will raise a ValueError.
 
 ## Subchapter
-Lists: Indexing
+Python Casting:What is Complex Type Casting
 
 ## Subchapter Introduction
-Indexing is needed to access the items of a list, using square brackets. 
+Complex type casting, also known as explicit type casting, is a technique used in programming to convert data from one type to another. Specifically, complex type casting involves converting data between complex number types, which are numbers in the form a + bi, where a and b are real numbers and i is the imaginary unit.
 
-```python
-variable = listname[index]
-```
-There are two ways of indexing:
+In Python, complex type casting is done explicitly by using the complex() function. This function takes two arguments: the real part of the complex number and the imaginary part of the complex number. For example, to cast the integer 3 and the float 2.5 to a complex number, we can use the following code:
 
-Zero indexing: the first item of a list has the index `0`, the second item of the list has the index `1` and so on.
-
-Negative indexing: the last item of a list has the index `-1`, the second last item has the index `-2` and so on.
-
-Slicing is used to access more than one item of a list in one command.
-
-```python
-values = listname[start:end]
+```py3
+x = complex(3, 2.5)
 ```
 
-The index `start` is included while the index `end` is not.
-
-The index `start` can be omitted and it is considered that it takes the value `0`. Also, the index `end` can be omitted and it is considered that it takes the index of the last item of the list.
+This will create a complex number with a real part of 3 and an imaginary part of 2.5i.
 
 ## Exercise Description
-Create a list called `colours` which includes the strings `'red'`, `'blue'` and `'yellow'` and print the last item of the list using the negative indexing.
+Create a complex number from a negative float and a positive integer. (Input: x = -2.75, y = 4)
 
 ## Code
-```python
-colours = ['red','blue','yellow']
-
-print(colours[-1])
+```py3
+x = -2.75
+y = 4
+z = complex(x, y)
+print(z)
 ```
+
 ## Output Data
-yellow
+type=oneline
+(-2.75+4j)
 
 ## Hints
 
 ### Hint 1
-To access the last item of a list write:
-
-```python
-variable = listname[-1]
-```
+The `complex()` function takes two arguments: the real part and the imaginary part.
 
 #### Penalty
 20 Points
 
+### Hint 2
+The result of the `complex()` function is a complex number.
+
+#### Penalty
+20 Points
+
+## Difficulty
+1
