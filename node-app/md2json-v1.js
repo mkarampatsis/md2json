@@ -3,9 +3,9 @@ const showdown = require('showdown');
 const html2json = require('html2json').html2json;
 const json2html = require('html2json').json2html;
 const mongoose = require('mongoose');
-const customAlphabet = require('nanoid').customAlphabet;
+const short = require('short-uuid');
 
-var Exercise = require('./model/Exercise.js');
+const Exercise = require('./model/Exercise.js');
 
 converter = new showdown.Converter({completeHTMLDocument: true, tables: true});
 
@@ -14,7 +14,7 @@ let tag = '';
 let object = {};
 let subObject = {};
 
-const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+const uuid = short.generate();
 
 const inputFolder = '../data/input/';
 const outputFolder = '../data/output/';
@@ -26,8 +26,6 @@ fs.readdirSync(inputFolder).forEach(file => {
     const data = fs.readFileSync(`${inputFolder}${file}`, 'utf8');
     console.log("File: ",file)
     
-    const nanoid = customAlphabet(alphabet, 10);
-
     html = converter.makeHtml(data);
 
     object.introduction = [];
@@ -58,8 +56,8 @@ fs.readdirSync(inputFolder).forEach(file => {
 
           if (getTag(child[i])==='h1'){
             if (child[i]['child'][0]['text'].includes('Exercise')){
-              // object.exercise = child[i]['child'][0]['text'].split(":")[0].toLowerCase().trim();
-              object.exercise = nanoid();
+              object.exercise = child[i]['child'][0]['text'].split(":")[0].toLowerCase().trim();
+              // object.exercise = uuid;
               object.type = child[i]['child'][0]['text'].split(":")[1].toLowerCase().trim()
             } else {
               object.author = {'name':'', 'email':''}
@@ -96,8 +94,8 @@ fs.readdirSync(inputFolder).forEach(file => {
             setChildTag('outputdata'); 
           }
 
-          if (getTag(child[i])==='h2' && getAttributeID(child[i])==='difficulty'){
-            setChildTag('difficulty'); 
+          if (getTag(child[i])==='h2difficulty' && getAttributeID(child[i])==='difficulty'){
+            setChildTag(''); 
           }
   
           if (getTag(child[i])==='h3'){
@@ -161,35 +159,38 @@ fs.readdirSync(inputFolder).forEach(file => {
   
       object2text=JSON.stringify(object);
       fs.writeFileSync(`${outputFolder}dom.json`, object2text, { flag: 'w+' });
+      
+
+      let newExercise = new Exercise ({
+      // let item = {
+        introduction: object.introduction.join(' '),
+        subintroduction: object.subintroduction.join(' '),
+        exercise_description: object.exercise_description.join(' '),
+        category: object.category,
+        hints: object.hints,
+        author: object.author,
+        exercise: object.exercise,
+        type: object.type,
+        code: object.code,
+        difficulty: object.difficulty[0],
+        output: object.outputdata.join(' ') 
+      // }
+
+      // console.log(item);
+      })
   
-      // var newExercise = new Exercise ({
-      //   introduction: object.introduction.join(' '),
-      //   subintroduction: object.subintroduction.join(' '),
-      //   exercise_description: object.exercise_description.join(' '),
-      //   category: object.category,
-      //   hints: object.hints,
-      //   author: object.author,
-      //   exercise: object.exercise,
-      //   type: object.type,
-      //   code: object.code,
-      //   output: object.outputdata.join(' ') 
-      // })
-  
-      // newExercise.save(function(err,result){
-      //   if (err){
-      //     console.log(object.exercise)
-      //     console.log(err);
-      //   }
-      //   else{
-      //     console.log(result.exercise);
-      //     // console.log(result);
-        fs.rename(`${inputFolder}${file}`, `${checkedFolder}${file}`, (err) => {
-          if (err) throw err;
-          console.log(`File ${file} checked and moved`);
-        });
-        // mongoose.connection.close();
-      //   }
-      // })
+      newExercise.save(function(err,result){
+        if (err){
+          console.log(">>>>",object.exercise)
+          console.log(err);
+        }
+        else{
+          console.log(result.exercise);
+          // console.log(result);
+          fs.renameSync(`${inputFolder}${file}`, `${checkedFolder}${file}`);
+          mongoose.connection.close();
+        }
+      })
     } catch (err) {
       console.log(object.exercise)
       console.error(err);

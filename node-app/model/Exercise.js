@@ -1,6 +1,5 @@
-/* This is Exercise.js */
 const mongoose = require('mongoose');
-// const uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 require("dotenv").config();
 
@@ -52,13 +51,14 @@ const exerciseSchema = new Schema({
 		category: { type: categorySchema, required: true },
     hints: { type: [hintSchema], required: true },
     author: { type: authorSchema, required: true },
-		exercise: { type: String, required: true },
+		exercise: { type: String, required: true, unique: true },
     type: { type: String, required: true },
     code: { type: String, required: true },
-    output: { type: Array, required: true }
+    output: { type: Array, required: true },
+    difficulty: { type: String, required: true }
 	});
 
 // Apply the uniqueValidator plugin to userSchema.
-// exerciseSchema.plugin(uniqueValidator);
+exerciseSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Exercise',exerciseSchema);
