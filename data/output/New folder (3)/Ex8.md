@@ -1,0 +1,121 @@
+# Author:Christos Hadjichristofi:christoshadjichristofi@hotmail.com
+
+# Exercise 8:Python
+
+## Chapter
+Python RegEx
+
+## Chapter Introduction
+Regex (short for regular expression) expressions are sequences of characters that define search patterns used to match, locate, or manipulate strings of text. They are widely used in computer science and programming for tasks such as text processing, pattern matching, and data validation. Regular expressions provide a powerful and flexible way to describe and search for patterns within text.
+
+Regex expressions consist of a combination of literal characters and special characters, known as metacharacters, which have special meanings within the regex syntax. Some commonly used metacharacters include:
+
+1. **`.`** (dot): Matches any single character except a newline character.
+2. `^` (caret): Matches the start of a line.
+3. `$` (dollar): Matches the end of a line.
+4. `*` (asterisk): Matches zero or more occurrences of the preceding character or group.
+5. `+` (plus): Matches one or more occurrences of the preceding character or group.
+6. `?` (question mark): Matches zero or one occurrence of the preceding character or group.
+7. `[]` (square brackets): Defines a character class, matching any single character within the brackets.
+8. `()` (parentheses): Creates a group, capturing or grouping parts of the pattern.
+9. `\` (backslash): Escapes a special character, treating it as a literal character.
+10. `|` (pipe): Acts as an OR operator, matching either the expression before or after it.
+
+These are just a few examples of metacharacters, and there are more available in different regex implementations. Regular expressions also support quantifiers, such as `{n}`, `{n,}`, and `{n,m}`, which specify the exact number or range of occurrences of the preceding character or group.
+
+Regex expressions can be used in various programming languages and text editors that support regular expressions, such as Python, JavaScript, Perl, and many others. They are incredibly powerful tools for manipulating and working with text, allowing for complex pattern matching and string manipulation operations.
+
+
+## Subchapter
+Python RegEx:Working with Python RegEx
+
+## Subchapter Introduction
+In Python, regular expressions (regex) are supported through the \`re\` module, which provides functions for working with regex patterns. Here's a brief overview of how regex works in Python:
+
+1. Importing the module:
+To use regular expressions in Python, you need to import the \`re\` module at the beginning of your code:
+
+```python
+import re
+```
+
+2. Compiling a regex pattern:
+Before using a regex pattern, you typically compile it using the `re.compile()` function. This step is optional but recommended if you plan to reuse the pattern multiple times. The compiled pattern object can be stored in a variable for later use:
+
+```python
+pattern = re.compile(r'your_regex_pattern')
+```
+
+The `r` before the string indicates a raw string, which helps avoid unintentional escape character conflicts.
+
+3. Matching and searching:
+The `re` module provides several functions for pattern matching and searching within strings. Some commonly used functions include:
+
+- `match(pattern, string)`: Attempts to match the pattern at the beginning of the string.
+- `search(pattern, string)`: Searches the string for a match to the pattern anywhere in the string.
+- `findall(pattern, string)`: Returns all non-overlapping matches of the pattern in the string as a list.
+- `finditer(pattern, string)`: Returns an iterator yielding match objects for all matches of the pattern in the string.
+
+These functions return match objects or match result objects that provide information about the matches found.
+
+4. Basic regex patterns:
+Regex patterns consist of a combination of literal characters and metacharacters that define the search pattern. Here are a few examples:
+
+- `\\d`: Matches any digit (0-9).
+- `\\w`: Matches any alphanumeric character (a-z, A-Z, 0-9, and underscore).
+- `\\s`: Matches any whitespace character (space, tab, newline).
+- `[abc]`: Matches any single character within the square brackets (a, b, or c).
+- `.`: Matches any single character except a newline.
+- `*`: Matches zero or more occurrences of the preceding character or group.
+- `+`: Matches one or more occurrences of the preceding character or group.
+- `?`: Matches zero or one occurrence of the preceding character or group.
+
+5. Regex modifiers and flags:
+Regex patterns can be modified with various options or flags to change their behavior. Some commonly used modifiers include:
+
+- `re.IGNORECASE` or `re.I`: Performs case-insensitive matching.
+- `re.MULTILINE` or `re.M`: Enables multiline matching, where `^` and `$` match the start and end of each line.
+- `re.DOTALL` or `re.S`: Allows the dot `.` to match newline characters as well.
+- `re.VERBOSE` or `re.X`: Enables verbose mode, which allows you to write more readable patterns with comments and whitespace.
+
+These modifiers can be passed as additional arguments to the regex functions or included within the pattern using the `(?i)`, `(?m)`, `(?s)`, or `(?x)` syntax.
+
+This is just a basic overview of using regular expressions in Python. Regular expressions offer a wide range of functionality, including grouping, capturing, substitution, and more. The official Python documentation for the `re` module provides detailed information on all the available functions, syntax, and options: [Python `re` module documentation](https://docs.python.org/3/library/re.html)
+
+## Exercise Description
+Split a given string into a list of words. (Input: 'The quick brown fox')
+
+Expected output:
+```
+Words: [list of words]
+```
+
+## Code
+```py3
+import re
+
+input_string = 'The quick brown fox'
+words = re.split(r'\s+', input_string)
+print('Words:', words)
+```
+
+## Output Data
+type=oneline
+Words: ['The', 'quick', 'brown', 'fox']
+
+## Hints
+
+### Hint 1
+Use the `split()` function from the `re` module.
+
+#### Penalty
+20 Points
+
+### Hint 2
+Pass the appropriate regex pattern to split the string into words.
+
+#### Penalty
+20 Points
+
+## Difficulty
+2
